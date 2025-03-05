@@ -22,7 +22,6 @@ type DaySteps struct {
 	personaldata.Personal
 }
 
-
 // создайте метод Parse()
 func (ds *DaySteps) Parse(datastring string) (err error) {
 
@@ -54,7 +53,16 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 2.	Вычислите количество сожжённых калорий.
 3.	Сформируйте и верните строку с информацией.
 */
+
 func (ds DaySteps) ActionInfo() string {
+    dist := spentenergy.Distance(ds.Steps)
+    ccal := spentenergy.WalkingSpentCalories(ds.Steps, ds.Weight, ds.Height, ds.Duration)
+
+    return fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n", ds.Steps, dist, ccal)
+}
+
+
+/*func (ds DaySteps) ActionInfo() string {
 	var s string
 	s+=string(ds.Steps)
 	s+=string(ds.Duration)
@@ -68,4 +76,4 @@ func (ds DaySteps) ActionInfo() string {
 
 	ccal := spentenergy.WalkingSpentCalories(ds.Steps, ds.Weight, ds.Height, ds.Duration)
 	return fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n", ds.Steps, dist, ccal)
-}
+}*/

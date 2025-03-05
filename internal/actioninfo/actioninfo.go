@@ -1,7 +1,7 @@
 package actioninfo
 
 import (
-	
+	"fmt"
 )
 
 // создайте интерфейс DataParser
@@ -21,8 +21,11 @@ func Info(dataset []string, dp DataParser) {
 	for _, v := range dataset {
 		err := dp.Parse(v)
 		if err != nil {
+			errorBytes := []byte(fmt.Sprintf("%v\n", err))
+			fmt.Println(string(errorBytes))
 			continue
 		}
-		dp.ActionInfo()
+		fmt.Println(dp.ActionInfo())
+		//dp.ActionInfo()
 	}
 }

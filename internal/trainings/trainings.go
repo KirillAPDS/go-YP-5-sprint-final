@@ -59,15 +59,14 @@ func (t *Training) Parse(datastring string) (err error) {
 func (t Training) ActionInfo() string {
 	var ccal float64
 
-	var s string
-	s+=string(t.Steps)
-	s+=t.TrainingType
-	s+=string(t.Duration)
+	/*var s string
+	s+=string(t.Steps) + "," + t.TrainingType + "," + string(t.Duration)
+
 	err := t.Parse(s)
 
 	if err != nil {
 		return fmt.Sprintf("Тип тренировки: %s\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий: %.2f\n", err, 0.0, 0.0, 0.0, 0.0)
-	}
+	}*/
 
 	dist := spentenergy.Distance(t.Steps)
 	speed := spentenergy.MeanSpeed(t.Steps, t.Duration)
